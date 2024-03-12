@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.11.6 on linux)" generated="2024-02-08T10:43:25.525229" rpa="false" schemaversion="5">
+<suite id="s1" name="Qemu Test" source="/home/tnemet/job_interview/Robot_Framework_testing/qemu_test.robot">
+<test id="s1-t1" name="Start Process" line="15">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-02-08T10:43:25.601977" level="INFO">${qemu} = qemu-system-x86_64 -boot d -cdrom /home/tnemet/openwrt/myimages/x86.iso # qemu command</msg>
+<var>${qemu}</var>
+<arg>${QEMU_COMMAND}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-02-08T10:43:25.601806" elapsed="0.000199"/>
+</kw>
+<kw name="Start Process" owner="Process">
+<msg time="2024-02-08T10:43:25.602328" level="INFO">Starting process:
+qemu-system-x86_64 -boot d -cdrom /home/tnemet/openwrt/myimages/x86.iso # qemu command</msg>
+<arg>${qemu}</arg>
+<arg>shell=True</arg>
+<arg>alias=qemu_process</arg>
+<doc>Starts a new process on background.</doc>
+<status status="PASS" start="2024-02-08T10:43:25.602155" elapsed="0.002471"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-02-08T10:43:26.605458" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-02-08T10:43:25.605043" elapsed="1.000506"/>
+</kw>
+<kw name="Run" owner="OperatingSystem">
+<msg time="2024-02-08T10:43:26.606306" level="INFO">Running command 'ps -A | grep qemu 2&gt;&amp;1'.</msg>
+<msg time="2024-02-08T10:43:26.624287" level="INFO">${started} =   40136 ?        00:00:00 qemu-system-x86</msg>
+<var>${started}</var>
+<arg>ps -A | grep qemu</arg>
+<doc>Runs the given command in the system and returns the output.</doc>
+<status status="PASS" start="2024-02-08T10:43:26.605774" elapsed="0.018554"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${started}</arg>
+<arg>qemu-system-x86</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-02-08T10:43:26.624616" elapsed="0.000211"/>
+</kw>
+<status status="PASS" start="2024-02-08T10:43:25.601089" elapsed="1.024008"/>
+</test>
+<status status="PASS" start="2024-02-08T10:43:25.526026" elapsed="1.099641"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Qemu Test">Qemu Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

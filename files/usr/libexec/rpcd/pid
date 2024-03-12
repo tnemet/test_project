@@ -1,0 +1,30 @@
+#!/bin/ash
+
+case "$1" in
+    #The list function describes how to use the ubus functions.
+        list)
+                echo '{ "service": { } }'
+        ;;
+    #The call function describes the methods that are available
+        call)
+                case "$2" in
+                        
+                        service)
+                                ps_output=$(ps -eo pid,comm --no-header)
+
+				# Print the JSON array header
+				printf '{"services": ['
+
+				# Process each line of ps output
+				echo "$ps_output" | while IFS=' ' read pid service; do
+				# Print JSON object directly to stdout
+				printf '{"PID": %s, "service": "%s"},\n' "$pid" "$service"
+				done
+
+				# Remove the trailing comma and close the JSON array
+				printf ']}\n'
+                        ;;
+                esac
+        ;;
+esac
+
