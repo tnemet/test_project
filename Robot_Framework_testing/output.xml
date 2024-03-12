@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot generator="Robot 7.0 (Python 3.11.6 on linux)" generated="2024-02-08T10:43:25.525229" rpa="false" schemaversion="5">
-<suite id="s1" name="Qemu Test" source="/home/tnemet/job_interview/Robot_Framework_testing/qemu_test.robot">
+<suite id="s1" name="Qemu Test" source="/home/tnemet/test_project/Robot_Framework_testing/qemu_test.robot">
 <test id="s1-t1" name="Start Process" line="15">
 <kw name="Set Variable" owner="BuiltIn">
 <msg time="2024-02-08T10:43:25.601977" level="INFO">${qemu} = qemu-system-x86_64 -boot d -cdrom /home/tnemet/openwrt/myimages/x86.iso # qemu command</msg>
